@@ -157,5 +157,5 @@ Tabs are indexed starting from 0.
 The following API methods are provided:
 
 * `init()`: Set attributes/classes, bind events. Called automatically on construction. Does nothing if already been called.
-* `selectTab(idx)`: Select tab `idx`. Does nothing if tab `idx` does not exist or is already selected.
+* `selectTab(idx, disableFocus)`: Select tab `idx`. Does nothing if tab `idx` does not exist or is already selected. The optional 'disableFocus' argument can be set to true to stop the aria-selected tab receving focus if required.
 * `destroy()`: Unbind events, remove `o-tabs--js` class. After calling this, `init()` can be called again to re-initialise the tabs.
