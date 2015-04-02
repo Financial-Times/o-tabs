@@ -2,7 +2,7 @@
 'use strict';
 var oDom = require('o-dom');
 
-function Tabs(rootEl) {
+function Tabs(rootEl, disableFocus) {
 
 	var tabsObj = this;
 	var tabEls;
@@ -119,7 +119,7 @@ function Tabs(rootEl) {
 		var tabEl = oDom.getClosestMatch(ev.target, '[role=tab]');
 		if (tabEl) {
 			var i = getTabIndexFromElement(tabEl);
-			myself.selectTab(i);
+			myself.selectTab(i, disableFocus);
 		}
 	}
 
@@ -136,7 +136,7 @@ function Tabs(rootEl) {
 		dispatchCustomEvent('oTabs.ready', {
 			tabs: tabsObj
 		});
-		myself.selectTab(getSelectedTabElement());
+		myself.selectTab(getSelectedTabElement(), disableFocus);
 	}
 
 	function destroy() {
