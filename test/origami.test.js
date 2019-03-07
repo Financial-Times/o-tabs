@@ -1,9 +1,9 @@
 /* eslint-env mocha, sinon, proclaim */
-import proclaim from 'proclaim';
-import sinon from 'sinon/pkg/sinon';
-import * as fixtures from './helpers/fixtures';
+const proclaim = require('proclaim');
+const sinon = require('sinon/pkg/sinon');
+const fixtures = require('./helpers/fixtures');
 
-import Tabs from './../main';
+const Tabs = require('./../main');
 
 describe("Tabs", () => {
 	it('is defined', () => {

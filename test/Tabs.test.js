@@ -1,15 +1,15 @@
 /* eslint-env mocha, sinon, proclaim */
 
-import * as fixtures from './helpers/fixtures';
-import proclaim from 'proclaim';
-import sinon from 'sinon/pkg/sinon';
+const fixtures = require('./helpers/fixtures');
+const proclaim = require('proclaim');
+const sinon = require('sinon/pkg/sinon');
 
 sinon.assert.expose(proclaim, {
 	includeFail: false,
 	prefix: ''
 });
 
-import Tabs from '../main';
+const Tabs = require('../main');
 
 let testTabs;
 let tabsEl;
