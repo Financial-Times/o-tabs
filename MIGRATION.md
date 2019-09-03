@@ -5,7 +5,7 @@
 
 - The `oTabs` mixin now includes all styles required for unstyled tabs and button tabs. See the [Sass documentation](README.md#sass) for information on the new parameters
 - The `oTabsButtonTabs` mixin has been removed. These styles are included when you call the `oTabs` mixin
-- The `oTabsButtonTabsTheme` mixin has been removed to `oTabsButtonTabsAddTheme`. You can include new themes in the `oTabs` mixin
+- The `oTabsButtonTabsTheme` mixin has been removed. You can include new themes in the `oTabs` mixin
 
 ## Migrating from v3 to v4
 
