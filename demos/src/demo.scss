@@ -1,6 +1,7 @@
-$o-tabs-is-silent: false;
 
 @import "../../main";
+
+@include oTabs();
 
 body {
 	margin: 10px;

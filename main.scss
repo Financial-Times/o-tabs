@@ -17,7 +17,7 @@
 ///   @include oTabs($opts: ('themes': ('primary'));
 /// @access public
 @mixin oTabs($opts: (
-	'themes': $_o-tabs-themes
+	'themes': ('primary', 'inverse')
 )) {
 	$themes: map-get($opts, 'themes');
 
@@ -30,7 +30,7 @@
 	// Output default themes. Other themes avalible, see o-buttons themes.
 	@each $theme in $themes {
 		@if _oTabsSupports($theme) {
-			@include oTabsButtonTabsAddTheme($theme);
+			@include _oTabsButtonTabsTheme($theme);
 		}
 	}
 }

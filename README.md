@@ -149,7 +149,7 @@ The __buttontabs__ style comes in two sizes that conform to the `o-buttons` size
 
 ### Mixin: `oTabs`
 
-The `oTabs` mixin is used to output base styles as well as styles for _all_ of the tab themes. This output includes the `o-tabs` classes:
+The `oTabs` mixin is used to output base styles as well as styles for several of the tab themes (primary and inverse). This output includes the `o-tabs` classes:
 
 ```scss
 @include oTabs();
@@ -172,16 +172,8 @@ If you wish to specify a subset of themes to output styles for, you can pass in 
 
 ```scss
 @include oTabs($opts: (
-    'themes': ('primary')
+    'themes': ('mono')
 ));
-```
-
-### Mixin: `oTabsButtonTabsAddTheme`
-
-The `oTabsButtonTabsAddTheme` mixin can be used to output a class for one of the themes, outlined in the [themes table](#themes):
-
-```scss
-@include oTabsButtonTabsAddTheme('mono');
 ```
 
 ```css
@@ -192,15 +184,15 @@ The `oTabsButtonTabsAddTheme` mixin can be used to output a class for one of the
 
 ### Themes
 
-This table outlines all of the possible themes you can request in the [`oTabs` mixin](#mixin-otabs) and [`oTabsButtonTabsAddTheme` mixin](#mixin-otabsbuttontabsaddtheme). All of these are [themes in o-buttons](https://github.com/Financial-Times/o-buttons#themes):
+This table outlines all of the possible themes you can request in the [`oTabs` mixin](#mixin-otabs). All of these are [themes in o-buttons](https://github.com/Financial-Times/o-buttons#themes):
 
-| Size      | Mixin support                                                         | Brand support    |
-|-----------|-----------------------------------------------------------------------|------------------|
-| secondary | Always defined – no need to use a mixin to include this               | master, internal |
-| primary   | Defined by default in `oTabs`, available in `oTabsButtonTabsAddTheme` | master, internal |
-| inverse   | Defined by default in `oTabs`, available in `oTabsButtonTabsAddTheme` | master, internal |
-| mono      | Available in `oTabsButtonTabsAddTheme`                                | master, internal |
-| b2c       | Available in `oTabsButtonTabsAddTheme`                                | master           |
+| Size      | Notes                                    | Brand support    |
+|-----------|------------------------------------------|------------------|
+| secondary | Always defined – no need to include this | master, internal |
+| primary   | Included by default                      | master, internal |
+| inverse   | Included by default                      | master, internal |
+| mono      | Not included by default                  | master, internal |
+| b2c       | Not included by default                  | master           |
 
 
 ## Migration Guide

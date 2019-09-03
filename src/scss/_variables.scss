@@ -5,14 +5,3 @@
 /// @type Boolean
 /// @access public
 $o-tabs-is-silent: true !default;
-
-/// Tab themes
-/// A list used to loop over all tab themes.
-/// For actual values: (@see _brand.scss).
-///
-/// @type List
-/// @access private
-$_o-tabs-themes: (
-	'primary',
-	'inverse'
-);

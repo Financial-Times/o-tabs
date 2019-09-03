@@ -40,16 +40,8 @@
 /// Outputs a modifier class to theme tabs.
 ///
 /// @param {String} $theme - A theme identifier (string), see o-buttons for a list of available themes.
-/// @access public
-@mixin oTabsButtonTabsAddTheme($theme) {
-
-	// Error if theme is not a string – you used to be able to define these as maps
-	@if type-of($theme) != 'string' {
-		@warn '"oTabsButtonTabsAddTheme" expects $theme to be a string.';
-	}
-
-	// Output defined theme styles with selector.
-	$selector: _oTabsGetThemeSelector($theme);
+/// @access private
+@mixin _oTabsButtonTabsTheme($theme) {
 	.o-tabs--buttontabs.o-tabs--#{$theme} {
 		[role=tab] {
 			@include oButtonsTheme($theme);
