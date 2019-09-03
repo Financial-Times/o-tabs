@@ -3,9 +3,9 @@
 Tabs component for dividing content into meaningful sections.
 
 - [Usage](#usage)
-	- [Markup](#markup)
-	- [JavaScript](#javascript)
-	- [Sass](#sass)
+  - [Markup](#markup)
+  - [JavaScript](#javascript)
+  - [Sass](#sass)
 - [Migration guide](#migration-guide)
 - [Contact](#contact)
 - [Licence](#licence)
@@ -24,19 +24,19 @@ This is an example of an HTML structure that __o-tabs__ will accept:
 
 ```html
 <ul data-o-component="o-tabs" class="o-tabs" role="tablist">
-	<li role="tab"><a href="#tabContent1">Tab 1</a></li>
-	<li role="tab"><a href="#tabContent2">Tab 2</a></li>
-	<li role="tab"><a href="#tabContent3">Tab 3</a></li>
+    <li role="tab"><a href="#tabContent1">Tab 1</a></li>
+    <li role="tab"><a href="#tabContent2">Tab 2</a></li>
+    <li role="tab"><a href="#tabContent3">Tab 3</a></li>
 </ul>
 <div id="tabContent1" class="o-tabs__tabpanel">
-	Tab content 1
+    Tab content 1
 </div>
 <div id="tabContent2" class="o-tabs__tabpanel">
-	Tab content 2
+    Tab content 2
 </div>
 <div id="tabContent3" class="o-tabs__tabpanel">
-	<div>Note: first elements of each tab will get focused when it is selected. In this case, this div will receive focus.</div>
-	Tab content 3
+    <div>Note: first elements of each tab will get focused when it is selected. In this case, this div will receive focus.</div>
+    Tab content 3
 </div>
 ```
 
@@ -84,7 +84,7 @@ A `o.DOMContentLoaded` event can be dispatched on the `document` to auto-constru
 
 ```javascript
 document.addEventListener("DOMContentLoaded", function() {
-	document.dispatchEvent(new CustomEvent('o.DOMContentLoaded'));
+    document.dispatchEvent(new CustomEvent('o.DOMContentLoaded'));
 });
 ```
 
@@ -95,7 +95,7 @@ Note that for browsers that do not support `DOMContentLoaded` (IE8 etc), the eve
 ```javascript
 const Tabs = require('o-tabs');
 const tabsObjects = Tabs.init(document.body, {
-	disablefocus: false
+    disablefocus: false
 });
 ```
 
@@ -108,7 +108,7 @@ An array of any constructed Tabs objects will be returned.
 ```javascript
 const Tabs = require('o-tabs');
 const myTabs = new Tabs(document.getElementById('myTabsRootElement'), {
-	disablefocus: false
+    disablefocus: false
 });
 ```
 
@@ -117,11 +117,11 @@ const myTabs = new Tabs(document.getElementById('myTabsRootElement'), {
 The following events will be dispatched on the Tabs' root DOM element:
 
 * `oTabs.ready`: The Tabs object has initialised. Event detail:
-	* `tabs`: The __o-tabs__ object.
+  * `tabs`: The __o-tabs__ object.
 * `oTabs.tabSelect`: A tab has been selected. Event detail:
-	* `tabs`: The __o-tabs__ object.
-	* `selected`: The index of the selected tab.
-	* `lastSelected`: The index of the last selected tab.
+  * `tabs`: The __o-tabs__ object.
+  * `selected`: The index of the selected tab.
+  * `lastSelected`: The index of the last selected tab.
 
 #### API
 
@@ -130,7 +130,7 @@ Tabs are indexed starting from 0.
 The following API methods are provided:
 
 * `init(config)`: Set attributes/classes, bind events. Called automatically on construction. Does nothing if already been called. `config` object accepts:
-	- `disablefocus`: If set to `true`, it will stop the aria-selected tab from receiving focus.
+  - `disablefocus`: If set to `true`, it will stop the aria-selected tab from receiving focus.
 * `selectTab(idx)`: Select tab `idx`. Does nothing if tab `idx` does not exist or is already selected.
 * `destroy()`: Unbind events, remove `o-tabs--js` class. After calling this, `init()` can be called again to re-initialise the tabs.
 
@@ -144,29 +144,78 @@ To apply the __buttontabs__ styling, add a `o-tabs--buttontabs` class to the roo
 <ul data-o-component="o-tabs" class="o-tabs o-tabs--buttontabs" role="tablist">
 ```
 
-or use the mixin:
-
-```sass
-@include oTabsButtonTabs;
-```
-
 The __buttontabs__ style comes in two sizes that conform to the `o-buttons` sizes: medium and big. Medium is the default size and big can be applied by adding the class `o-tabs--big`.
 
 #### Options
 
 * __Align right__: Add `o-tabs--alignright` to the root element.
 
-#### Mixins
+#### Silent mode
 
-o-tabs styles are also available via mixins. The base styles and buttontabs styles are available using the `oTabs` and `oTabsButtonTabs` mixins.
-
-If you're using the Sass mixins, you can also theme o-tabs using the `oTabsButtonTabsTheme` mixin, which can be set to any of the [`o-buttons` themes](https://github.com/Financial-Times/o-buttons#quick-start) by passing the name as a parameter:
+As with all Origami components, o-tabs has a [silent mode](https://origami.ft.com/spec/v1/sass/#sass-silent-mode). To use its compiled CSS (rather than incorporating its mixins into your own Sass) set `$o-tabs-is-silent: false;` in your Sass before you import the o-tabs Sass:
 
 ```sass
-@include oTabsButtonTabsTheme($theme: 'inverse', $selector: false);
+$o-tabs-is-silent: false;
+@import 'o-tabs/main';
 ```
 
-Custom themes are also supported using `oTabsButtonTabsTheme` and the same custom theme map as for [`o-buttons` custom themes](https://github.com/Financial-Times/o-buttons#custom-themes).
+#### Mixin: `oTabs`
+
+If using o-tabs in silent mode, you'll need to use the mixins outlined here to output styles.
+
+The `oTabs` mixin is used to output base styles as well as styles for _all_ of the tab themes. This output includes the `o-tabs` classes:
+
+```scss
+@include oTabs();
+```
+
+```css
+.o-tabs {
+    /* styles */
+}
+.o-tabs--buttontabs {
+    /* styles */
+}
+.o-tabs--primary {
+    /* styles */
+}
+/* etc. */
+```
+
+If you wish to specify a subset of themes to output styles for, you can pass in options (see [themes](#themes) for available options):
+
+```scss
+@include oTabs($opts: (
+    'themes': ('primary')
+));
+```
+
+#### Mixin: `oTabsButtonTabsAddTheme`
+
+The `oTabsButtonTabsAddTheme` mixin can be used to output a class for one of the themes, outlined in the [themes table](#themes):
+
+```scss
+@include oTabsButtonTabsAddTheme('mono');
+```
+
+```css
+.o-tabs--mono {
+    /* styles */
+}
+```
+
+#### Themes
+
+This table outlines all of the possible themes you can request in the [`oTabs` mixin](#mixin-otabs) and [`oTabsButtonTabsAddTheme` mixin](#mixin-otabsbuttontabsaddtheme). All of these are [themes in o-buttons](https://github.com/Financial-Times/o-buttons#themes):
+
+| Size      | Mixin support                                                         | Brand support    |
+|-----------|-----------------------------------------------------------------------|------------------|
+| secondary | Always defined – no need to use a mixin to include this               | master, internal |
+| primary   | Defined by default in `oTabs`, available in `oTabsButtonTabsAddTheme` | master, internal |
+| inverse   | Defined by default in `oTabs`, available in `oTabsButtonTabsAddTheme` | master, internal |
+| mono      | Available in `oTabsButtonTabsAddTheme`                                | master, internal |
+| b2c       | Available in `oTabsButtonTabsAddTheme`                                | master           |
+
 
 ## Migration Guide
 
