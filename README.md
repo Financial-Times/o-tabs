@@ -168,7 +168,7 @@ The `oTabs` mixin is used to output base styles as well as styles for several of
 /* etc. */
 ```
 
-If you wish to specify a subset of themes to output styles for, you can pass in options (see [themes](#themes) for available options):
+If you wish to specify more themes to output styles for, you can pass in options (see [themes](#themes) for available options):
 
 ```scss
 @include oTabs($opts: (
