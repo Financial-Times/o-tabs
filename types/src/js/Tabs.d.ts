@@ -1,0 +1,31 @@
+export default Tabs;
+declare class Tabs {
+    static init(rootEl: any, config: any): any;
+    constructor(rootEl: any, config: any);
+    rootEl: any;
+    updateUrl: boolean;
+    selectedTabIndex: number;
+    tabEls: any;
+    tabpanelEls: HTMLElement[];
+    boundClickHandler: any;
+    boundKeyPressHandler: any;
+    boundHashChangeHandler: any;
+    config: any;
+    getTabTargetId(tabEl: any): any;
+    getTabPanelEls(tabEls: any): HTMLElement[];
+    getTabElementFromHash(): any;
+    getTabIndexFromElement(el: any): any;
+    getSelectedTabElement(): any;
+    getSelectedTabIndex(): any;
+    isValidTab(index: any): boolean;
+    hidePanel(panelEl: any): void;
+    showPanel(panelEl: any, disableFocus: any): void;
+    dispatchCustomEvent(event: any, data?: {}, namespace?: string): void;
+    selectTab(newIndex: any, updateUrl?: boolean): void;
+    clickHandler(ev: any): void;
+    keyPressHandler(ev: any): void;
+    hashChangeHandler(): void;
+    updateCurrentTab(tabEl: any): void;
+    tabHasValidUrl(tabEl: any): boolean;
+    destroy(): void;
+}
