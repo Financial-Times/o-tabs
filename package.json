@@ -1,6 +1,6 @@
 {
   "name": "@financial-times/o-tabs",
-  "version": "100.0.0-11",
+  "version": "100.0.0-12",
   "description": "Tabs component for dividing content into meaningful sections.",
   "keywords": [],
   "homepage": "https://github.com/Financial-Times/o-tabs#readme",
@@ -33,9 +33,9 @@
     "typescript": "^4.0.5"
   },
   "peerDependencies": {
-    "@financial-times/o-brand": "^100.0.0-11",
-    "@financial-times/o-buttons": "^100.0.0-11",
-    "@financial-times/o-colors": "^100.0.0-11"
+    "@financial-times/o-brand": "^100.0.0-12",
+    "@financial-times/o-buttons": "^100.0.0-12",
+    "@financial-times/o-colors": "^100.0.0-12"
   },
   "publishConfig": {
     "registry": "https://origami-npm-registry-prototype.herokuapp.com"
