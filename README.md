@@ -1,5 +1,11 @@
 # o-tabs
 
+***
+
+**This component has moved to the [Origami Component System](https://github.com/Financial-Times/origami).**
+
+***
+
 Tabs component for dividing content into meaningful sections.
 
 - [Usage](#usage)
